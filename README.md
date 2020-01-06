@@ -6,8 +6,6 @@ Projeto da Alura cursos online, desenvolvido em Python3 com framework Django
 
 Nessa aula:
 
-- Buscamos os dados email e senha para realizar o login do usuário, passando o token de segurança e criamos a página de dashboard onde renderizamos caso os  campos do formulário não estejam em branco;
+- Criamos o formulário de criação de receitas;
 
-- Realizamos o login do usuário, caso as credencias estejam corretas exibindo o nome do usuário com o código `user.username`;
-
-- Melhoramos a página de dashboard e alteramos os links do menu caso o usuário esteja logado, além de criarmos uma forma do usuário realizar o logout.
+- Exibimos a receita criada por cada usuário, não vinculando com as receitas publicadas da nossa aplicação.

@@ -59,9 +59,9 @@
                                     {% if user.is_authenticated %}
                                         <li><a href="{% url 'index' %}">Página principal</a></li>
                                         <li><a href="{% url 'dashboard' %}">Minhas receitas</a></li>
+                                        <li><a href="{% url 'cria_receita' %}">Criar receita</a></li>
                                         <li><a href="{% url 'logout' %}">Logout</a></li>
                                     {% else %}
-                                        <li><a href="{% url 'index' %}">Página principal</a></li>
                                         <li><a href="{% url 'cadastro' %}">Cadastro</a></li>
                                         <li><a href="{% url 'login' %}">Login</a></li>
                                     {% endif %}
