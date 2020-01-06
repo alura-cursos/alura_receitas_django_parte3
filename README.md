@@ -2,12 +2,12 @@
 
 Projeto da Alura cursos online, desenvolvido em Python3 com framework Django
 
-## Projeto final aula 2
+## Projeto final aula 3
 
 Nessa aula:
 
-- Tentamos recuperar os dados do formulário através do verbo HTTP `POST`, porém recebemos uma mensagem informando que o token de segurança não foi encontrado;
+- Buscamos os dados email e senha para realizar o login do usuário, passando o token de segurança e criamos a página de dashboard onde renderizamos caso os  campos do formulário não estejam em branco;
 
-- Para solucionar, adicionamos a template tag `{% csrf_token %}` e  recuperamos o nome enviado na requisição através do código `request.POST['nome'];
+- Realizamos o login do usuário, caso as credencias estejam corretas exibindo o nome do usuário com o código `user.username`;
 
-- Criamos algumas validações e criamos um novo usuário em nossa aplicação.
+- Melhoramos a página de dashboard e alteramos os links do menu caso o usuário esteja logado, além de criarmos uma forma do usuário realizar o logout.
