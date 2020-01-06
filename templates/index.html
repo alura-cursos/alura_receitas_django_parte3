@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Preloader -->
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="{% static 'img/core-img/pizza.png' %}" alt="">
+    </div>
+
+    {% include 'partials/_busca.html' %}
+
+    {% include 'partials/_menu.html' %}
+
+    <!-- ##### Best Receipe Area Start ##### -->
+    <section class="best-receipe-area">
+        <div class="container">
+            <div class="row">
+                {% if receitas %}
+                {% for receita in receitas %}
+                <!-- Single Best Receipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        {% if receita.foto_receita == '' %}
+                            <img src="{% static 'img/bg-img/foto_receita.png' %}" alt="">
+                        {% else %}
+                            <img src="{{ receita.foto_receita.url }}" alt="">
+                        {% endif %}
+                            <div class="receipe-content">
+                            <a href="{% url 'receita' receita.id %}">
+                                <h5>{{ receita.nome_receita }}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- ##### Best Receipe Area End ##### -->
+
+    {% include 'partials/_footer.html' %}
+{% endblock %}

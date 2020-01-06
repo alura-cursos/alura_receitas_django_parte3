@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Preloader -->
+<div id="preloader">
+    <i class="circle-preloader"></i>
+    <img src="{% static 'img/core-img/pizza.png' %}" alt="">
+</div>
+
+{% include 'partials/_busca.html' %}
+
+{% include 'partials/_menu.html' %}
+
+<!-- ##### Contact Form Area Start ##### -->
+<div class="contact-area section-padding-0-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h2>Login</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="contact-form-area">
+                    <form action="" method="">
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                            <label for="email"><b>Email</b></label>
+                                <input type="text" id="email" class="form-control" name="email" placeholder="Entre com o email cadastrado">
+                            </div>
+                                <div class="col-12 col-lg-12">
+                                <label for="senha"><b>Senha</b></label>
+                                <input id="senha" type="password" class="form-control" name="senha" placeholder="Digite aqui sua senha">
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="btn btn-success" type="submit">Acessar sua conta</button>
+                                <button type="button" class="btn btn-primary" onclick="exibirCriarConta()">Ainda não tem conta? Clique aqui</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function exibirCriarConta()
+{
+     location.href = "{% url 'cadastro' %}";
+} 
+</script>
+
+{% include 'partials/_footer.html' %}
+{% endblock %}
