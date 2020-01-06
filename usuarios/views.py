@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from django.contrib import auth
+from django.contrib import auth, messages
 from receitas.models import Receita
 
 def cadastro(request):
@@ -9,21 +9,24 @@ def cadastro(request):
         email = request.POST['email']
         senha = request.POST['password']
         senha2 = request.POST['password2']
-        if not nome.strip():
-            print('O campo nome não pode ficar em branco')
+        if campo_vazio(nome):
+            messages.error(request,'O campo nome não pode ficar em branco')
             return redirect('cadastro')
-        if not email.strip():
-            print('O campo email não pode ficar em branco')
+        if campo_vazio(email):
+            messages.error(request,'O campo email não pode ficar em branco')
             return redirect('cadastro')
-        if senha != senha2:
-            print('As senhas não são iguais')
+        if senhas_nao_sao_iguais(senha, senha2):
+            messages.error(request, 'As senhas não são iguais')
             return redirect('cadastro')
         if User.objects.filter(email=email).exists():
-            print('Usuário já cadastrado')
+            messages.error(request,'Usuário já cadastrado')
+            return redirect('cadastro')
+        if User.objects.filter(username=nome).exists():
+            messages.error(request,'Usuário já cadastrado')
             return redirect('cadastro')
         user = User.objects.create_user(username=nome, email=email, password=senha)
         user.save()
-        print('Usuário cadastrado com sucesso')
+        messages.success(request, 'Cadastro realizado com sucesso')
         return redirect('login')
     else:
         return render(request,'usuarios/cadastro.html')
@@ -32,8 +35,8 @@ def login(request):
     if request.method == 'POST':
         email = request.POST['email']
         senha = request.POST['senha']
-        if email == "" or senha == "":
-            print('Os campos email e senha não podem ficar em branco')
+        if campo_vazio(email) or campo_vazio(senha):
+            messages.error(request,'Os campos email e senha não podem ficar em branco')
             return redirect('login')
         print(email, senha)
         if User.objects.filter(email=email).exists():
@@ -76,3 +79,10 @@ def cria_receita(request):
         return redirect('dashboard')
     else:
         return render(request, 'usuarios/cria_receita.html')
+
+def campo_vazio(campo):
+    return not campo.strip()
+
+def senhas_nao_sao_iguais(senha, senha2):
+    return senha != senha2
+

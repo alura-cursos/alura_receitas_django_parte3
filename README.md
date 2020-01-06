@@ -6,6 +6,6 @@ Projeto da Alura cursos online, desenvolvido em Python3 com framework Django
 
 Nessa aula:
 
-- Criamos o formulário de criação de receitas;
+- Adicionando mensagens de sucesso e erro atraves do [messages framework do Django](https://docs.djangoproject.com/en/3.0/ref/contrib/messages/);
 
-- Exibimos a receita criada por cada usuário, não vinculando com as receitas publicadas da nossa aplicação.
+- Melhoramos nosso código, criando funções para evitar duplicidade.
