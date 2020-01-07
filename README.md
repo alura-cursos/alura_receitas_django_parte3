@@ -2,7 +2,7 @@
 
 Projeto da Alura cursos online, desenvolvido em Python3 com framework Django
 
-## Projeto final aula 3
+## Projeto final aula 5
 
 Nessa aula:
 
